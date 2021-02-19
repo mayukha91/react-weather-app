@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import CurrentDate from "./CurrentDate";
 import "./App.css";
 import axios from "axios";
 
@@ -10,12 +11,14 @@ export default function App() {
     setWeatherData({
       ready: true,
       temperature: Math.round(response.data.main.temp),
+      date: new Date(response.data.dt * 1000),
       description: response.data.weather[0].description,
 
       city: response.data.name,
     });
   }
   if (weatherData.ready) {
+    let info = <CurrentDate date={weatherData.date} />;
     return (
       <div className="App">
         <form>
@@ -28,7 +31,9 @@ export default function App() {
         <ul>
           <li>
             <div className="row ">
-              <div className="col-6 day">January 15 </div>
+              <div className="col-6 day">
+                {info[0]} {info[1]}{" "}
+              </div>
               <div className="col-6 time"> 08:00</div>
             </div>
           </li>
