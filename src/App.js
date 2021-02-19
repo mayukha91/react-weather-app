@@ -1,56 +1,74 @@
-import logo from "./logo.svg";
+import React, { useState } from "react";
 import "./App.css";
+import axios from "axios";
 
 export default function App() {
-  return (
-    <div className="App">
-      <form>
-        <input type="search" placeholder="Enter a city" />
-        <button class="search">
-          <i class="fas fa-search"></i>
-        </button>
-      </form>
-      <h1>New York </h1>
-      <ul>
-        <li>
-          <div class="row ">
-            <div class="col-6 day">January 15</div>
-            <div class="col-6 time"> 08:00</div>
-          </div>
-        </li>
-        <li>
-          <div class="row">
-            <div class="col-6 temp">
-              <strong> 56</strong>
-              <small>
-                <a href="#" id="cen">
-                  °C
-                </a>{" "}
-                |
-                <a href="#" id="fah">
-                  °F
-                </a>
-              </small>
+  let [weatherData, setWeatherData] = useState({ ready: false });
+
+  function handleResponse(response) {
+    console.log(response.data);
+    setWeatherData({
+      ready: true,
+      temperature: Math.round(response.data.main.temp),
+      description: response.data.weather[0].description,
+
+      city: response.data.name,
+    });
+  }
+  if (weatherData.ready) {
+    return (
+      <div className="App">
+        <form>
+          <input type="search" placeholder="Enter a city" />
+          <button className="search">
+            <i className="fas fa-search"></i>
+          </button>
+        </form>
+        <h1>{weatherData.city}</h1>
+        <ul>
+          <li>
+            <div className="row ">
+              <div className="col-6 day">January 15 </div>
+              <div className="col-6 time"> 08:00</div>
             </div>
-            <div class="col-6 imgDesc">
-              <div class="row img1">
-                <img
-                  src="http://openweathermap.org/img/wn/10d@2x.png"
-                  alt=""
-                  id="icon"
-                />
+          </li>
+          <li>
+            <div className="row">
+              <div className="col-6 temp">
+                <strong> {weatherData.temperature}</strong>
+                <small>
+                  <a href="#" id="cen">
+                    °C
+                  </a>{" "}
+                  |
+                  <a href="#" id="fah">
+                    °F
+                  </a>
+                </small>
               </div>
-              <div class="row sub1">Cloudy</div>
+              <div className="col-6 imgDesc">
+                <div className="row img1">
+                  <img
+                    src="http://openweathermap.org/img/wn/10d@2x.png"
+                    alt=""
+                    id="icon"
+                  />
+                </div>
+                <div className="row sub1 text-capitalize">
+                  {weatherData.description}
+                </div>
+              </div>
             </div>
-          </div>
-        </li>
-      </ul>
-      <small>
-        <a href="https://github.com/mayukha91/Vanilla-weather-app">
-          open-source{" "}
-        </a>
-        by Suma
-      </small>
-    </div>
-  );
+          </li>
+        </ul>
+      </div>
+    );
+  } else {
+    let apiKey = "81a39b8b4f83887f2094935f304faa2f";
+    let city = "Paris";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(handleResponse);
+
+    return "Loading..";
+  }
 }
