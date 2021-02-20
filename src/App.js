@@ -15,7 +15,7 @@ export default function App() {
       temperature: Math.round(response.data.main.temp),
       date: new Date(response.data.dt * 1000),
       description: response.data.weather[0].description,
-
+      icon: response.data.weather[0].icon,
       city: response.data.name,
     });
   }

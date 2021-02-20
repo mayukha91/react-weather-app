@@ -19,24 +19,25 @@ export default function Temperature(props) {
     return (
       <div className="Temperature">
         <strong> {props.celsius}</strong>
+
         <small>
-          °C |
+          <span>°C </span>|
           <a href="/" id="fah" onClick={toFahrenheit}>
-            °F
+            <span className="fah">°F</span>
           </a>
         </small>
       </div>
     );
   } else {
-    let fahrenheit = (props.celsius * 9) / 5 + 32;
+    let fahrenheit = Math.round((props.celsius * 9) / 5 + 32);
     return (
       <div className="Temperature">
         <strong> {fahrenheit}</strong>
         <small>
           <a href="#" id="cen" onClick={toCelsius}>
-            °C
-          </a>{" "}
-          | °F
+            <span>°C</span>
+          </a>
+          | <span className="fah">°F</span>
         </small>
       </div>
     );

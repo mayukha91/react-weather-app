@@ -1,5 +1,6 @@
 .App {
   margin: 20px;
+  margin-bottom: 0;
   padding: 20px;
   border: 1px solid grey;
 }
@@ -22,36 +23,34 @@ input {
 ul {
   list-style: none;
 }
-.day {
-  position: relative;
-  left: 70px;
-}
-.time {
-  position: relative;
-  left: -90px;
-}
+
 .Temperature strong {
-  font-weight: bold;
+  margin-right: 0;
+  padding-right: 0;
+  font-weight: light;
   font-size: 48px;
   position: relative;
-  left: 70px;
+  right: 230px;
+  top: 50px;
 }
+
 .Temperature small {
+  font-size: 12px;
   position: relative;
-  font-size: 16px;
-  left: 70px;
-  top: -24px;
+  right: 230px;
+  top: 25px;
 }
+
 .img1 {
-  size: 10%;
   position: relative;
-  top: -5px;
+  right: 170px;
+  top: 35px;
 }
 .sub1 {
   position: relative;
-  top: -25px;
-  right: -8px;
+  top: 15px;
+  right: 170px;
 }
-.temp a {
+.Temperature a {
   text-decoration: none;
 }

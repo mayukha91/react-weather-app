@@ -1,4 +1,5 @@
 import React from "react";
+import "./CurrentDate.css";
 
 export default function CurrentDate(props) {
   let months = [
@@ -31,8 +32,14 @@ export default function CurrentDate(props) {
 
   return (
     <div>
-      {month} {today} {"  "}
-      {hours}:{minutes}
+      <ul>
+        <li className="dayInfo">
+          {month} {today}
+        </li>
+        <li className="timeInfo">
+          {hours}:{minutes}
+        </li>
+      </ul>
     </div>
   );
 }

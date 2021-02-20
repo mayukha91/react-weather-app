@@ -4,12 +4,14 @@ import App from "./App";
 import Temperature from "./Temperature";
 
 export default function WeatherInfo(props) {
+  let icon1 = props.data.icon;
+  console.log(icon1);
   return (
     <div>
       <h1>{props.data.city}</h1>
       <ul>
         <li>
-          <div className="row ">
+          <div className="row">
             <div className="col">
               <CurrentDate date={props.data.date} />
             </div>
@@ -17,13 +19,14 @@ export default function WeatherInfo(props) {
         </li>
         <li>
           <div className="row">
-            <Temperature celsius={props.data.temperature} />
-
+            <div className="col-6">
+              <Temperature celsius={props.data.temperature} />
+            </div>
             <div className="col-6 imgDesc">
               <div className="row img1">
                 <img
-                  src="http://openweathermap.org/img/wn/10d@2x.png"
-                  alt=""
+                  src={`https://openweathermap.org/img/wn/${icon1}@2x.png`}
+                  alt=" "
                   id="icon"
                 />
               </div>
