@@ -30,13 +30,13 @@ ul {
   position: relative;
   left: -90px;
 }
-.temp strong {
+.Temperature strong {
   font-weight: bold;
   font-size: 48px;
   position: relative;
   left: 70px;
 }
-.temp small {
+.Temperature small {
   position: relative;
   font-size: 16px;
   left: 70px;

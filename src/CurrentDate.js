@@ -29,5 +29,10 @@ export default function CurrentDate(props) {
     today = `0${today}`;
   }
 
-  return [month, today, hours, minutes];
+  return (
+    <div>
+      {month} {today} {"  "}
+      {hours}:{minutes}
+    </div>
+  );
 }
