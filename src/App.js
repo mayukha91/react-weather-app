@@ -1,15 +1,14 @@
 import React, { useState } from "react";
-//import CurrentDate from "./CurrentDate";
 import WeatherInfo from "./WeatherInfo";
 import "./App.css";
 import axios from "axios";
 
 export default function App() {
-  let [weatherData, setWeatherData] = useState({ ready: false });
-  let [city, setCity] = useState("Paris");
+  const [weatherData, setWeatherData] = useState({ ready: "false " });
+  const [city, setCity] = useState("Paris");
 
   function handleResponse(response) {
-    console.log(response.data);
+    //console.log(response.data);
     setWeatherData({
       ready: true,
       temperature: Math.round(response.data.main.temp),
@@ -17,10 +16,15 @@ export default function App() {
       description: response.data.weather[0].description,
       icon: response.data.weather[0].icon,
       city: response.data.name,
+      wind: Math.round(response.data.wind.speed),
+      humidity: response.data.main.humidity,
+      visibility: response.data.visibility / 1000,
+      lat: response.data.coord.lat,
+      lon: response.data.coord.lon,
     });
   }
   function search() {
-    let apiKey = "81a39b8b4f83887f2094935f304faa2f";
+    let apiKey = "9e274541ce589d07f5464be359594a01";
 
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
     axios.get(apiUrl).then(handleResponse);
@@ -51,7 +55,6 @@ export default function App() {
     );
   } else {
     search();
-
     return "Loading..";
   }
 }

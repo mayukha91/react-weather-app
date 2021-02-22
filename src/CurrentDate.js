@@ -31,11 +31,11 @@ export default function CurrentDate(props) {
   }
 
   return (
-    <div>
+    <div className="todayInfo">
       <ul>
         <li className="dayInfo">
           {month} {today}
-        </li>
+        </li>{" "}
         <li className="timeInfo">
           {hours}:{minutes}
         </li>

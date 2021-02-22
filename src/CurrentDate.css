@@ -1,9 +1,6 @@
-li {
+.todayInfo li {
   display: inline-block;
-  padding: 20px;
-  margin-top: 0;
-  padding-top: 0;
+  padding: 10px;
   position: relative;
-  top: -20px;
-  right: -20px;
+  right: 35px;
 }

@@ -24,32 +24,14 @@ ul {
   list-style: none;
 }
 
-.Temperature strong {
-  margin-right: 0;
-  padding-right: 0;
-  font-weight: light;
-  font-size: 48px;
-  position: relative;
-  right: 230px;
-  top: 50px;
-}
-
-.Temperature small {
-  font-size: 12px;
-  position: relative;
-  right: 230px;
-  top: 25px;
-}
-
 .img1 {
   position: relative;
-  right: 170px;
-  top: 35px;
+  top: -15px;
 }
 .sub1 {
   position: relative;
-  top: 15px;
-  right: 170px;
+  top: -40px;
+  right: -25px;
 }
 .Temperature a {
   text-decoration: none;

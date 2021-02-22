@@ -2,10 +2,12 @@ import React from "react";
 import CurrentDate from "./CurrentDate";
 import App from "./App";
 import Temperature from "./Temperature";
+import WeatherDescription from "./WeatherDescription";
+import NextFourDays from "./NextFourDays";
 
 export default function WeatherInfo(props) {
   let icon1 = props.data.icon;
-  console.log(icon1);
+
   return (
     <div>
       <h1>{props.data.city}</h1>
@@ -37,6 +39,12 @@ export default function WeatherInfo(props) {
           </div>
         </li>
       </ul>
+      <WeatherDescription
+        humidity={props.data.humidity}
+        wind={props.data.wind}
+        visibility={props.data.visibility}
+      />
+      <NextFourDays lat={props.data.lat} lon={props.data.lon} />
     </div>
   );
 }
