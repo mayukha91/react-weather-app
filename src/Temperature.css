@@ -1,13 +1,13 @@
-.Temperature {
+/*.Temperature {
   position: relative;
   right: -130px;
-}
+}*/
 .temp {
   font-weight: bold;
   font-size: 48px;
 }
 .unit {
   font-size: 14px;
-  position: relative;
-  top: -20px;
+  /*position: relative;
+  top: -20px;*/
 }

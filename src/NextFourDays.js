@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import "./NextFourDays.css";
 
 export default function NextFourDays(props) {
   let [nextData, setNextData] = useState(" ");
@@ -23,10 +24,10 @@ export default function NextFourDays(props) {
       tempMin3: Math.round(response.data.daily[3].temp.min),
       tempMax4: Math.round(response.data.daily[4].temp.max),
       tempMin4: Math.round(response.data.daily[4].temp.min),
-      icon1: response.data.daily[1].weather.icon,
-      icon2: response.data.daily[1].weather.icon,
-      icon3: response.data.daily[1].weather.icon,
-      icon4: response.data.daily[1].weather.icon,
+      icon1: response.data.daily[1].weather[0].icon,
+      icon2: response.data.daily[2].weather[0].icon,
+      icon3: response.data.daily[3].weather[0].icon,
+      icon4: response.data.daily[4].weather[0].icon,
     });
   }
   let months = [
@@ -44,9 +45,9 @@ export default function NextFourDays(props) {
     "December",
   ];
   function formatDate(timestamp) {
-    let date = new Date(timestamp);
-    let month = months[date.getMonth()];
-    let today = date.getDate();
+    let dateNext = new Date(timestamp);
+    let month = months[dateNext.getMonth()];
+    let today = dateNext.getDate();
 
     return `${month}  ${today}`;
   }
@@ -69,41 +70,41 @@ export default function NextFourDays(props) {
         <hr />
         <li>
           <div className="row">
-            <div className="col-6">{formatDate(nextData.day1)}</div>
-            <div className="col-6">
+            <span className="col-6">{formatDate(nextData.day1)}</span>
+            <span className="col-6">
               {nextData.tempMax1}° / {nextData.tempMin1}°{" "}
               {iconDisplay(nextData.icon1)}
-            </div>
+            </span>
           </div>
         </li>
         <hr />
         <li>
           <div className="row">
-            <div className="col-6">{formatDate(nextData.day2)}</div>
-            <div className="col-6">
+            <span className="col-6">{formatDate(nextData.day2)}</span>
+            <span className="col-6">
               {nextData.tempMax2}° / {nextData.tempMin2}°{" "}
               {iconDisplay(nextData.icon2)}
-            </div>
+            </span>
           </div>
         </li>
         <hr />
         <li>
           <div className="row">
-            <div className="col-6">{formatDate(nextData.day3)}</div>
-            <div className="col-6">
+            <span className="col-6">{formatDate(nextData.day3)}</span>
+            <span className="col-6">
               {nextData.tempMax3}° / {nextData.tempMin3}°{" "}
               {iconDisplay(nextData.icon3)}
-            </div>
+            </span>
           </div>
         </li>
         <hr />
         <li>
           <div className="row">
-            <div className="col-6">{formatDate(nextData.day4)}</div>
-            <div className="col-6">
+            <span className="col-6">{formatDate(nextData.day4)}</span>
+            <span className="col-6">
               {nextData.tempMax4}° / {nextData.tempMin4}°{" "}
               {iconDisplay(nextData.icon4)}
-            </div>
+            </span>
           </div>
         </li>
       </ul>

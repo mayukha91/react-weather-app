@@ -4,7 +4,7 @@ import "./App.css";
 import axios from "axios";
 
 export default function App() {
-  const [weatherData, setWeatherData] = useState({ ready: "false " });
+  const [weatherData, setWeatherData] = useState({ ready: false });
   const [city, setCity] = useState("Paris");
 
   function handleResponse(response) {
@@ -39,7 +39,7 @@ export default function App() {
 
   if (weatherData.ready) {
     return (
-      <div className="App">
+      <div className="App wrapper">
         <form onSubmit={handleSubmit}>
           <input
             type="search"
