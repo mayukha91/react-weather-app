@@ -3,10 +3,7 @@ import axios from "axios";
 import "./NextFourDays.css";
 
 export default function NextFourDays(props) {
-  let [nextData, setNextData] = useState(" ");
-  let apiKey1 = "9e274541ce589d07f5464be359594a01";
-
-  let apiUrl1 = `https://api.openweathermap.org/data/2.5/onecall?lat=${props.lat}&lon=${props.lon}&appid=${apiKey1}&units=metric`;
+  let [nextData, setNextData] = useState({ loaded: false });
 
   function handleResponse(response) {
     console.log(response.data);
@@ -62,52 +59,66 @@ export default function NextFourDays(props) {
     );
     return img;
   }
+  if (
+    nextData.loaded &&
+    nextData.lat === props.lat &&
+    nextData.lon === props.lon
+  ) {
+    return (
+      <div>
+        <ul>
+          <hr />
+          <li>
+            <div className="row">
+              <span className="col-6">{formatDate(nextData.day1)}</span>
+              <span className="col-6">
+                {nextData.tempMax1}° / {nextData.tempMin1}°{" "}
+                {iconDisplay(nextData.icon1)}
+              </span>
+              <hr />
+            </div>
+          </li>
 
-  axios.get(apiUrl1).then(handleResponse);
-  return (
-    <div>
-      <ul>
-        <hr />
-        <li>
-          <div className="row">
-            <span className="col-6">{formatDate(nextData.day1)}</span>
-            <span className="col-6">
-              {nextData.tempMax1}° / {nextData.tempMin1}°{" "}
-              {iconDisplay(nextData.icon1)}
-            </span>
-          </div>
-        </li>
-        <hr />
-        <li>
-          <div className="row">
-            <span className="col-6">{formatDate(nextData.day2)}</span>
-            <span className="col-6">
-              {nextData.tempMax2}° / {nextData.tempMin2}°{" "}
-              {iconDisplay(nextData.icon2)}
-            </span>
-          </div>
-        </li>
-        <hr />
-        <li>
-          <div className="row">
-            <span className="col-6">{formatDate(nextData.day3)}</span>
-            <span className="col-6">
-              {nextData.tempMax3}° / {nextData.tempMin3}°{" "}
-              {iconDisplay(nextData.icon3)}
-            </span>
-          </div>
-        </li>
-        <hr />
-        <li>
-          <div className="row">
-            <span className="col-6">{formatDate(nextData.day4)}</span>
-            <span className="col-6">
-              {nextData.tempMax4}° / {nextData.tempMin4}°{" "}
-              {iconDisplay(nextData.icon4)}
-            </span>
-          </div>
-        </li>
-      </ul>
-    </div>
-  );
+          <li>
+            <div className="row">
+              <span className="col-6">{formatDate(nextData.day2)}</span>
+              <span className="col-6">
+                {nextData.tempMax2}° / {nextData.tempMin2}°{" "}
+                {iconDisplay(nextData.icon2)}
+              </span>
+              <hr />
+            </div>
+          </li>
+
+          <li>
+            <div className="row">
+              <span className="col-6">{formatDate(nextData.day3)}</span>
+              <span className="col-6">
+                {nextData.tempMax3}° / {nextData.tempMin3}°{" "}
+                {iconDisplay(nextData.icon3)}
+              </span>
+              <hr />
+            </div>
+          </li>
+
+          <li>
+            <div className="row">
+              <span className="col-6">{formatDate(nextData.day4)}</span>
+              <span className="col-6">
+                {nextData.tempMax4}° / {nextData.tempMin4}°{" "}
+                {iconDisplay(nextData.icon4)}
+              </span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    );
+  } else {
+    let apiKey1 = "f89f61a51bc4807d3dd00d252a18cc71";
+
+    let apiUrl1 = `https://api.openweathermap.org/data/2.5/onecall?lat=${props.lat}&lon=${props.lon}&appid=${apiKey1}&units=metric`;
+    axios.get(apiUrl1).then(handleResponse);
+
+    return null;
+  }
 }

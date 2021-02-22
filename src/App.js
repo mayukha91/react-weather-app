@@ -3,12 +3,12 @@ import WeatherInfo from "./WeatherInfo";
 import "./App.css";
 import axios from "axios";
 
-export default function App() {
+export default function App(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
-  const [city, setCity] = useState("Paris");
+  const [city, setCity] = useState(props.defaultCity);
 
   function handleResponse(response) {
-    //console.log(response.data);
+    console.log(response.data);
     setWeatherData({
       ready: true,
       temperature: Math.round(response.data.main.temp),
@@ -23,12 +23,7 @@ export default function App() {
       lon: response.data.coord.lon,
     });
   }
-  function search() {
-    let apiKey = "9e274541ce589d07f5464be359594a01";
 
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-    axios.get(apiUrl).then(handleResponse);
-  }
   function handleSubmit(event) {
     event.preventDefault();
     search();
@@ -36,21 +31,28 @@ export default function App() {
   function handleCityChange(event) {
     setCity(event.target.value);
   }
+  function search() {
+    let apiKey = "ffcbb55bbda3eb5c19b4af245b287025";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(handleResponse);
+  }
 
   if (weatherData.ready) {
     return (
-      <div className="App wrapper">
-        <form onSubmit={handleSubmit}>
-          <input
-            type="search"
-            placeholder="Enter a city"
-            onChange={handleCityChange}
-          />
-          <button className="search">
-            <i className="fas fa-search"></i>
-          </button>
-        </form>
-        <WeatherInfo data={weatherData} />
+      <div className="App">
+        <div className="container">
+          <form onSubmit={handleSubmit}>
+            <input
+              type="search"
+              placeholder="Enter a city"
+              onChange={handleCityChange}
+            />
+            <button className="search">
+              <i className="fas fa-search"></i>
+            </button>
+          </form>
+          <WeatherInfo data={weatherData} />
+        </div>
       </div>
     );
   } else {

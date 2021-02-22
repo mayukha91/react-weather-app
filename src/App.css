@@ -1,11 +1,12 @@
 .App {
-  margin: 20px;
+  border: 1px solid grey;
+}
+.container {
+  margin: 20px auto;
   margin-bottom: 0;
   padding: 20px;
-  border: 1px solid grey;
-  max-width: 1000px;
-  max-height: 800px;
 }
+
 input {
   padding-left: 30px;
   line-height: 30px;
@@ -26,7 +27,7 @@ ul {
   list-style: none;
 }
 
-/*.img1 {
+.img1 {
   position: relative;
   top: -15px;
 }
@@ -34,7 +35,7 @@ ul {
   position: relative;
   top: -40px;
   right: -25px;
-}*/
+}
 .Temperature a {
   text-decoration: none;
 }

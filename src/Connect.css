@@ -1,7 +1,10 @@
 .Connect {
   text-align: center;
-  margin-top: 0;
 }
+
 a {
   text-decoration: underline;
+}
+.Connect small {
+  margin: 10px 0;
 }
