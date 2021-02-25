@@ -1,0 +1,12 @@
+.WeatherInfo li {
+  list-style: none;
+}
+img {
+  position: relative;
+  top: -14px;
+}
+.sub1 {
+  position: relative;
+  top: -38px;
+  right: -25px;
+}

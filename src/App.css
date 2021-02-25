@@ -1,41 +1,7 @@
+.App footer {
+  font-size: 14px;
+}
 .App {
-  border: 1px solid grey;
-}
-.container {
-  margin: 20px auto;
-  margin-bottom: 0;
-  padding: 20px;
-}
-
-input {
-  padding-left: 30px;
-  line-height: 30px;
-  border-radius: 10px;
-  color: rgb(6, 18, 41);
-  box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.2);
-  margin-right: 0;
-  margin-bottom: 10px;
-}
-.search {
-  line-height: 30px;
-  border-radius: 10px;
-  color: rgb(6, 18, 41);
-  box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.2);
-  margin-bottom: 10px;
-}
-ul {
-  list-style: none;
-}
-
-.img1 {
-  position: relative;
-  top: -15px;
-}
-.sub1 {
-  position: relative;
-  top: -40px;
-  right: -25px;
-}
-.Temperature a {
-  text-decoration: none;
+  margin: 30px auto;
+  max-width: 800px;
 }

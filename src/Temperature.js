@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import WeatherInfo from "./WeatherInfo";
-import "./App.css";
+
 import "./Temperature.css";
 
 export default function Temperature(props) {
@@ -20,7 +19,6 @@ export default function Temperature(props) {
     return (
       <div className="Temperature wrapper">
         <span className="temp">{props.celsius}</span>
-
         <span className="unit">
           °C |{" "}
           <a href="/" id="fah" onClick={toFahrenheit}>

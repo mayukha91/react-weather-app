@@ -1,7 +1,7 @@
-/*.Temperature {
+.Temperature {
   position: relative;
   right: -130px;
-}*/
+}
 .temp {
   font-weight: bold;
   font-size: 48px;

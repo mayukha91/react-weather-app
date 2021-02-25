@@ -1,5 +1,10 @@
-.row {
-  display: inline;
+.NextFourDays .row {
+  text-align: center;
   padding: 0;
   margin: 0 auto;
+}
+
+.NextFourDays .span {
+  display: inline-block;
+  text-align: center;
 }

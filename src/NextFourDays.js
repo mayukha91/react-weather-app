@@ -9,6 +9,7 @@ export default function NextFourDays(props) {
     console.log(response.data);
 
     setNextData({
+      loaded: true,
       day1: (response.data.daily[1].dt + response.data.timezone_offset) * 1000,
       day2: (response.data.daily[2].dt + response.data.timezone_offset) * 1000,
       day3: (response.data.daily[3].dt + response.data.timezone_offset) * 1000,
@@ -25,6 +26,8 @@ export default function NextFourDays(props) {
       icon2: response.data.daily[2].weather[0].icon,
       icon3: response.data.daily[3].weather[0].icon,
       icon4: response.data.daily[4].weather[0].icon,
+      lat: response.data.lat,
+      lon: response.data.lon,
     });
   }
   let months = [
@@ -53,6 +56,7 @@ export default function NextFourDays(props) {
     let img = (
       <img
         src={`https://openweathermap.org/img/wn/${x}@2x.png`}
+        width="50px"
         alt=" "
         id="icon"
       />
@@ -71,10 +75,10 @@ export default function NextFourDays(props) {
           <li>
             <div className="row">
               <span className="col-6">{formatDate(nextData.day1)}</span>
-              <span className="col-6">
-                {nextData.tempMax1}° / {nextData.tempMin1}°{" "}
-                {iconDisplay(nextData.icon1)}
+              <span className="col-3">
+                {nextData.tempMax1}° / {nextData.tempMin1}°
               </span>
+              <span className="col-3">{iconDisplay(nextData.icon1)}</span>
               <hr />
             </div>
           </li>
@@ -82,10 +86,10 @@ export default function NextFourDays(props) {
           <li>
             <div className="row">
               <span className="col-6">{formatDate(nextData.day2)}</span>
-              <span className="col-6">
+              <span className="col-3">
                 {nextData.tempMax2}° / {nextData.tempMin2}°{" "}
-                {iconDisplay(nextData.icon2)}
               </span>
+              <span className="col-3">{iconDisplay(nextData.icon2)}</span>
               <hr />
             </div>
           </li>
@@ -93,10 +97,10 @@ export default function NextFourDays(props) {
           <li>
             <div className="row">
               <span className="col-6">{formatDate(nextData.day3)}</span>
-              <span className="col-6">
+              <span className="col-3">
                 {nextData.tempMax3}° / {nextData.tempMin3}°{" "}
-                {iconDisplay(nextData.icon3)}
               </span>
+              <span className="col-3">{iconDisplay(nextData.icon3)}</span>
               <hr />
             </div>
           </li>
@@ -104,10 +108,10 @@ export default function NextFourDays(props) {
           <li>
             <div className="row">
               <span className="col-6">{formatDate(nextData.day4)}</span>
-              <span className="col-6">
+              <span className="col-3">
                 {nextData.tempMax4}° / {nextData.tempMin4}°{" "}
-                {iconDisplay(nextData.icon4)}
               </span>
+              <span className="col-3">{iconDisplay(nextData.icon4)}</span>
             </div>
           </li>
         </ul>
