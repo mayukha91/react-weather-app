@@ -1,6 +1,9 @@
 .Connect {
+  background-image: url("img1.jpeg");
   text-align: center;
   border: 1px solid grey;
+  color: black;
+  font-weight: bolder;
 }
 .container {
   margin: 20px auto;
@@ -17,6 +20,7 @@ input {
   margin-right: 0;
   margin-bottom: 10px;
 }
+
 .search {
   line-height: 30px;
   border-radius: 10px;

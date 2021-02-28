@@ -1,12 +1,16 @@
 import React, { useState } from "react";
 import WeatherInfo from "./WeatherInfo";
 import NextFourDays from "./NextFourDays";
+import img1 from "./img1.jpeg";
+import night1 from "./night1.jpeg";
 import "./Connect.css";
 import axios from "axios";
 
 export default function Connect(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
   const [city, setCity] = useState(props.defaultCity);
+  const [tempUnit, setTempUnit] = useState("celsius");
+  const [bg, setBg] = useState(img1);
 
   function handleResponse(response) {
     console.log(response.data);
@@ -40,7 +44,7 @@ export default function Connect(props) {
 
   if (weatherData.ready) {
     return (
-      <div className="Connect">
+      <div className="Connect" style="backgroundImage:bg">
         <div className="container">
           <form onSubmit={handleSubmit}>
             <input
@@ -52,8 +56,18 @@ export default function Connect(props) {
               <i className="fas fa-search"></i>
             </button>
           </form>
-          <WeatherInfo data={weatherData} />
-          <NextFourDays lat={weatherData.lat} lon={weatherData.lon} />
+          <WeatherInfo
+            data={weatherData}
+            tempUnit={tempUnit}
+            setTempUnit={setTempUnit}
+            bg={bg}
+            setBg={setBg}
+          />
+          <NextFourDays
+            lat={weatherData.lat}
+            lon={weatherData.lon}
+            tempUnit={tempUnit}
+          />
         </div>
       </div>
     );

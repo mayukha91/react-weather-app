@@ -3,19 +3,17 @@ import React, { useState } from "react";
 import "./Temperature.css";
 
 export default function Temperature(props) {
-  let [tempUnit, setTempUnit] = useState("celsius");
-
   function toCelsius(event) {
     event.preventDefault();
-    setTempUnit("celsius");
+    props.setTempUnit("celsius");
   }
 
   function toFahrenheit(event) {
     event.preventDefault();
-    setTempUnit("fahrenheit");
+    props.setTempUnit("fahrenheit");
   }
 
-  if (tempUnit === "celsius") {
+  if (props.tempUnit === "celsius") {
     return (
       <div className="Temperature wrapper">
         <span className="temp">{props.celsius}</span>

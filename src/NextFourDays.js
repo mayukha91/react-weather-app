@@ -68,55 +68,111 @@ export default function NextFourDays(props) {
     nextData.lat === props.lat &&
     nextData.lon === props.lon
   ) {
-    return (
-      <div>
-        <ul>
-          <hr />
-          <li>
-            <div className="row">
-              <span className="col-6">{formatDate(nextData.day1)}</span>
-              <span className="col-3">
-                {nextData.tempMax1}° / {nextData.tempMin1}°
-              </span>
-              <span className="col-3">{iconDisplay(nextData.icon1)}</span>
-              <hr />
-            </div>
-          </li>
+    if (props.tempUnit === "celsius") {
+      return (
+        <div>
+          <ul>
+            <hr />
+            <li>
+              <div className="row">
+                <span className="col-6">{formatDate(nextData.day1)}</span>
+                <span className="col-3">
+                  {nextData.tempMax1}° / {nextData.tempMin1}°
+                </span>
+                <span className="col-3">{iconDisplay(nextData.icon1)}</span>
+                <hr />
+              </div>
+            </li>
 
-          <li>
-            <div className="row">
-              <span className="col-6">{formatDate(nextData.day2)}</span>
-              <span className="col-3">
-                {nextData.tempMax2}° / {nextData.tempMin2}°{" "}
-              </span>
-              <span className="col-3">{iconDisplay(nextData.icon2)}</span>
-              <hr />
-            </div>
-          </li>
+            <li>
+              <div className="row">
+                <span className="col-6">{formatDate(nextData.day2)}</span>
+                <span className="col-3">
+                  {nextData.tempMax2}° / {nextData.tempMin2}°{" "}
+                </span>
+                <span className="col-3">{iconDisplay(nextData.icon2)}</span>
+                <hr />
+              </div>
+            </li>
 
-          <li>
-            <div className="row">
-              <span className="col-6">{formatDate(nextData.day3)}</span>
-              <span className="col-3">
-                {nextData.tempMax3}° / {nextData.tempMin3}°{" "}
-              </span>
-              <span className="col-3">{iconDisplay(nextData.icon3)}</span>
-              <hr />
-            </div>
-          </li>
+            <li>
+              <div className="row">
+                <span className="col-6">{formatDate(nextData.day3)}</span>
+                <span className="col-3">
+                  {nextData.tempMax3}° / {nextData.tempMin3}°{" "}
+                </span>
+                <span className="col-3">{iconDisplay(nextData.icon3)}</span>
+                <hr />
+              </div>
+            </li>
 
-          <li>
-            <div className="row">
-              <span className="col-6">{formatDate(nextData.day4)}</span>
-              <span className="col-3">
-                {nextData.tempMax4}° / {nextData.tempMin4}°{" "}
-              </span>
-              <span className="col-3">{iconDisplay(nextData.icon4)}</span>
-            </div>
-          </li>
-        </ul>
-      </div>
-    );
+            <li>
+              <div className="row">
+                <span className="col-6">{formatDate(nextData.day4)}</span>
+                <span className="col-3">
+                  {nextData.tempMax4}° / {nextData.tempMin4}°{" "}
+                </span>
+                <span className="col-3">{iconDisplay(nextData.icon4)}</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          <ul>
+            <hr />
+            <li>
+              <div className="row">
+                <span className="col-6">{formatDate(nextData.day1)}</span>
+                <span className="col-3">
+                  {Math.round((nextData.tempMax1 * 9) / 5 + 32)}° /{" "}
+                  {Math.round((nextData.tempMin1 * 9) / 5 + 32)}°
+                </span>
+                <span className="col-3">{iconDisplay(nextData.icon1)}</span>
+                <hr />
+              </div>
+            </li>
+
+            <li>
+              <div className="row">
+                <span className="col-6">{formatDate(nextData.day2)}</span>
+                <span className="col-3">
+                  {Math.round((nextData.tempMax2 * 9) / 5 + 32)}° /{" "}
+                  {Math.round((nextData.tempMin2 * 9) / 5 + 32)}°{" "}
+                </span>
+                <span className="col-3">{iconDisplay(nextData.icon2)}</span>
+                <hr />
+              </div>
+            </li>
+
+            <li>
+              <div className="row">
+                <span className="col-6">{formatDate(nextData.day3)}</span>
+                <span className="col-3">
+                  {Math.round((nextData.tempMax3 * 9) / 5 + 32)}° /{" "}
+                  {Math.round((nextData.tempMin3 * 9) / 5 + 32)}°{" "}
+                </span>
+                <span className="col-3">{iconDisplay(nextData.icon3)}</span>
+                <hr />
+              </div>
+            </li>
+
+            <li>
+              <div className="row">
+                <span className="col-6">{formatDate(nextData.day4)}</span>
+                <span className="col-3">
+                  {Math.round((nextData.tempMax4 * 9) / 5 + 32)}° /{" "}
+                  {Math.round((nextData.tempMin4 * 9) / 5 + 32)}°{" "}
+                </span>
+                <span className="col-3">{iconDisplay(nextData.icon4)}</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+      );
+    }
   } else {
     let apiKey1 = "f89f61a51bc4807d3dd00d252a18cc71";
 

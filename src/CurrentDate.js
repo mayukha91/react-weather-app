@@ -23,11 +23,17 @@ export default function CurrentDate(props) {
   if (minutes < 10) {
     minutes = `0${minutes}`;
   }
+
   if (hours < 10) {
     hours = `0${hours}`;
   }
   if (today < 10) {
     today = `0${today}`;
+  }
+  if (hours > 7 || hours > 20) {
+    props.setBg("night1.jpeg");
+  } else {
+    props.setBg("img1.jpeg");
   }
 
   return (

@@ -16,14 +16,22 @@ export default function WeatherInfo(props) {
         <li>
           <div className="row">
             <div className="col">
-              <CurrentDate date={props.data.date} />
+              <CurrentDate
+                date={props.data.date}
+                bg={props.bg}
+                setBg={props.setBg}
+              />
             </div>
           </div>
         </li>
         <li>
           <div className="row">
             <div className="col-6">
-              <Temperature celsius={props.data.temperature} />
+              <Temperature
+                celsius={props.data.temperature}
+                tempUnit={props.tempUnit}
+                setTempUnit={props.setTempUnit}
+              />
             </div>
             <div className="col-6 imgDesc">
               <div className="row img1">
