@@ -16,7 +16,12 @@ export default function Connect(props) {
     setWeatherData({
       ready: true,
       temperature: Math.round(response.data.main.temp),
-      date: new Date(response.data.dt * 1000),
+      date: new Date(
+        (response.data.dt +
+          new Date().getTimezoneOffset() * 60 +
+          response.data.timezone) *
+          1000
+      ),
       description: response.data.weather[0].description,
       icon: response.data.weather[0].icon,
       city: response.data.name,
@@ -44,7 +49,7 @@ export default function Connect(props) {
   if (weatherData.ready) {
     let todayDate = weatherData.date;
     let currentHours = todayDate.getHours();
-    //console.log(currentHours);
+    console.log(currentHours);
 
     if (currentHours < 7 || currentHours > 20) {
       let divStyle = {
@@ -84,7 +89,7 @@ export default function Connect(props) {
       };
 
       return (
-        <div style={divStyle} className="Connect">
+        <div className="Connect" style={divStyle}>
           <div className="container">
             <form onSubmit={handleSubmit}>
               <input

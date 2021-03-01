@@ -16,11 +16,11 @@ export default function CurrentDate(props) {
     "November",
     "December",
   ];
-  let month = months[props.date1.getMonth()];
-  let hours = props.date1.getHours();
+  let month = months[props.date.getMonth()];
+  let hours = props.date.getHours();
   console.log(hours);
-  let minutes = props.date1.getMinutes();
-  let today = props.date1.getDate();
+  let minutes = props.date.getMinutes();
+  let today = props.date.getDate();
   if (minutes < 10) {
     minutes = `0${minutes}`;
   }

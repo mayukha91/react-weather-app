@@ -16,7 +16,7 @@ export default function WeatherInfo(props) {
         <li>
           <div className="row">
             <div className="col">
-              <CurrentDate date1={props.data.date} />
+              <CurrentDate date={props.data.date} />
             </div>
           </div>
         </li>
