@@ -1,8 +1,8 @@
 .Connect {
-  background-image: url("img1.jpeg");
+  /*background-image: url("img1.jpeg");*/
   text-align: center;
   border: 1px solid grey;
-  color: black;
+  /*color: black;*/
   font-weight: bolder;
 }
 .container {

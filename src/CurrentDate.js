@@ -16,10 +16,11 @@ export default function CurrentDate(props) {
     "November",
     "December",
   ];
-  let month = months[props.date.getMonth()];
-  let hours = props.date.getHours();
-  let minutes = props.date.getMinutes();
-  let today = props.date.getDate();
+  let month = months[props.date1.getMonth()];
+  let hours = props.date1.getHours();
+  console.log(hours);
+  let minutes = props.date1.getMinutes();
+  let today = props.date1.getDate();
   if (minutes < 10) {
     minutes = `0${minutes}`;
   }
@@ -29,11 +30,6 @@ export default function CurrentDate(props) {
   }
   if (today < 10) {
     today = `0${today}`;
-  }
-  if (hours > 7 || hours > 20) {
-    props.setBg("night1.jpeg");
-  } else {
-    props.setBg("img1.jpeg");
   }
 
   return (

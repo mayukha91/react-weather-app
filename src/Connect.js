@@ -10,7 +10,6 @@ export default function Connect(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
   const [city, setCity] = useState(props.defaultCity);
   const [tempUnit, setTempUnit] = useState("celsius");
-  const [bg, setBg] = useState(img1);
 
   function handleResponse(response) {
     console.log(response.data);
@@ -43,34 +42,74 @@ export default function Connect(props) {
   }
 
   if (weatherData.ready) {
-    return (
-      <div className="Connect" style="backgroundImage:bg">
-        <div className="container">
-          <form onSubmit={handleSubmit}>
-            <input
-              type="search"
-              placeholder="Enter a city"
-              onChange={handleCityChange}
+    let todayDate = weatherData.date;
+    let currentHours = todayDate.getHours();
+    //console.log(currentHours);
+
+    if (currentHours < 7 || currentHours > 20) {
+      let divStyle = {
+        color: "white",
+        backgroundImage: "url(" + night1 + ")",
+      };
+      return (
+        <div className="Connect" style={divStyle}>
+          <div className="container">
+            <form onSubmit={handleSubmit}>
+              <input
+                type="search"
+                placeholder="Enter a city"
+                onChange={handleCityChange}
+              />
+              <button className="search">
+                <i className="fas fa-search"></i>
+              </button>
+            </form>
+            <WeatherInfo
+              data={weatherData}
+              tempUnit={tempUnit}
+              setTempUnit={setTempUnit}
             />
-            <button className="search">
-              <i className="fas fa-search"></i>
-            </button>
-          </form>
-          <WeatherInfo
-            data={weatherData}
-            tempUnit={tempUnit}
-            setTempUnit={setTempUnit}
-            bg={bg}
-            setBg={setBg}
-          />
-          <NextFourDays
-            lat={weatherData.lat}
-            lon={weatherData.lon}
-            tempUnit={tempUnit}
-          />
+            <NextFourDays
+              lat={weatherData.lat}
+              lon={weatherData.lon}
+              tempUnit={tempUnit}
+            />
+          </div>
         </div>
-      </div>
-    );
+      );
+    } else {
+      let divStyle = {
+        color: "black",
+        backgroundImage: "url(" + img1 + ")",
+      };
+
+      return (
+        <div style={divStyle} className="Connect">
+          <div className="container">
+            <form onSubmit={handleSubmit}>
+              <input
+                type="search"
+                placeholder="Enter a city"
+                onChange={handleCityChange}
+              />
+              <button className="search">
+                <i className="fas fa-search"></i>
+              </button>
+            </form>
+            <WeatherInfo
+              data={weatherData}
+              tempUnit={tempUnit}
+              setTempUnit={setTempUnit}
+            />
+            <NextFourDays
+              lat={weatherData.lat}
+              lon={weatherData.lon}
+              tempUnit={tempUnit}
+            />
+          </div>
+        </div>
+      );
+    }
   } else {
     search();
     return "Loading..";
