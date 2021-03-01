@@ -5,13 +5,13 @@ export default function WeatherDescription(props) {
   return (
     <div className="WeatherDescription">
       <ul>
-        <li>Humidity : {props.humidity}%</li> {"  "}|{"  "}
+        <li>Humidity: {props.humidity}%</li> {"  "}|{"  "}
         {"  "}
-        <li>Wind : {props.wind} km/hr</li>
+        <li>Wind: {props.wind} km/hr</li>
         {"  "}
         {"  "}|{"  "}
         {"  "}
-        <li> Visibility : {props.visibility} km/hr</li>
+        <li> Visibility: {props.visibility} km/hr</li>
       </ul>
     </div>
   );
